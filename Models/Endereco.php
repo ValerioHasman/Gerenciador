@@ -1,16 +1,18 @@
 <?php
 
-class Endereco{
+class Endereco
+{
 
-    private int $id;
+    private ?int $id;
     private string $estado;
     private string $cidade;
     private string $cep;
     private string $numero;
+    private Usuario $usuario;
 
     public function __construct(){}
 
-    public function __set($atributo, $value)
+    public function __set($atributo, $value): void
     {
         if ($atributo == 'estado'){
             $this->atributo = $value;
@@ -22,6 +24,9 @@ class Endereco{
             $this->atributo = $value;
         }
         if ($atributo == 'numero'){
+            $this->atributo = $value;
+        }
+        if ($atributo == 'usuario'){
             $this->atributo = $value;
         }
     }

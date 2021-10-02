@@ -13,6 +13,9 @@ body{
 .tamanhoDoIcone{
     height: 25vh;
 }
-.tamanhoDoIcone img{
-    height: 100%;
+.tamanhoDoIcone img, h1{
+    height: 50%;
+}
+.topo{
+    margin-top: 10vh;
 }

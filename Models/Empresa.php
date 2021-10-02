@@ -1,23 +1,25 @@
 <?php
 
-class Empresa{
+class Empresa
+{
 
-    private int $id;
+    private ?int $id;
     private string $nome;
     private string $cnpj;
-    private Lotes $lotes;
+    private Usuario $usuario;
+
 
     public function __construct(){}
 
-    public function __set($atributo, $value)
+    public function __set($atributo, $value): void
     {
-        if ($atributo = 'name'){
+        if ($atributo == 'name'){
             $this->atributo = $value;
         }
-        if ($atributo = 'cnpj'){
+        if ($atributo == 'cnpj'){
             $this->atributo = $value;
         }
-        if ($atributo = 'lotes'){
+        if ($atributo == 'usuario'){
             $this->atributo = $value;
         }
     }

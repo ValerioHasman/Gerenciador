@@ -1,12 +1,12 @@
 <?php
 
-class Pessoas
+class Usuario
 {
 
     private ?int $id;
     private string $nome;
-    private string $cpf;
-    private Usuario $ususario;
+    private string $email;
+    private string $senha;
 
     public function __construct(){}
 
@@ -15,10 +15,10 @@ class Pessoas
         if ($atributo == 'nome'){
             $this->atributo = $value;
         }
-        if ($atributo == 'cpf'){
+        if ($atributo == 'email'){
             $this->atributo = $value;
         }
-        if ($atributo == 'usuario'){
+        if ($atributo == 'senha'){
             $this->atributo = $value;
         }
     }
