@@ -5,6 +5,6 @@ class HomeController extends Controller
 
     public function index(): void
     {
-        $this->carregarTemplate('home', array());
+        $this->carregarTemplate('home/home', array());
     }
 }

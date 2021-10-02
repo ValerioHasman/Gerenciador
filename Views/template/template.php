@@ -13,7 +13,7 @@
     </script>
     <link rel="stylesheet" href="formatar/estilo.css">
     <link rel="shortcut icon" href="midias/ICONE.ico" type="image/x-icon">
-    <title><?= $nomeView ?></title>
+    <title>Gerenciador</title>
 </head>
 
 <body>

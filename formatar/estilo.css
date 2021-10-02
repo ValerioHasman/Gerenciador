@@ -9,30 +9,10 @@ body{
     padding: 0;
     background-color: rgb(177, 177, 202);
 }
-.carousel{
-    z-index: -99;
+
+.tamanhoDoIcone{
+    height: 25vh;
 }
-.carousel-item{
-    position: fixed;
-    width: 100%; height: 100%;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -ms-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    transition: opacity 1s;
-}
-.imagemRolando div div img{
-    display: block;
-    object-fit: cover;
-    width: 100%;
-    height: 100vh;
-    object-position: 0% 50%;
-}
-.caixaHome{
-    backdrop-filter: blur(0.20rem);
-    margin-top: 20vh;
-    text-align: center;
-}
-.topicosHome{
-    padding: 1rem;
+.tamanhoDoIcone img{
+    height: 100%;
 }
