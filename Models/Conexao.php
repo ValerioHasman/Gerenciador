@@ -1,6 +1,7 @@
 <?php
 
-class Conexao{
+class Conexao
+{
 
     private static PDO $instancia;
 

@@ -1,17 +1,17 @@
-create database `BD_2021_Gerenciador`
+create database IF NOT EXISTS `BD_2021_Gerenciador`
 default character set utf8
 default collate utf8_general_ci;
 
 use `BD_2021_Gerenciador`;
 
-CREATE TABLE `Usuario` (
+CREATE TABLE IF NOT EXISTS `Usuario` (
   `usu_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `usu_nome` varchar(255) NOT NULL,
   `usu_email` varchar(255) NOT NULL,
   `usu_senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Pessoas` (
+CREATE TABLE IF NOT EXISTS `Pessoas` (
   `pes_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `pes_nome` varchar(255) NOT NULL,
   `pes_cpf` varchar(11) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `Pessoas` (
   CONSTRAINT `fk_Usuario_Pessoas` FOREIGN KEY (`usu_id`) REFERENCES `Usuario` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Doses` (
+CREATE TABLE IF NOT EXISTS `Doses` (
   `dos_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `dos_nome` varchar(255) NOT NULL,
   `usu_id` int NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `Doses` (
   CONSTRAINT `fk_Usuario_Doses` FOREIGN KEY (`usu_id`) REFERENCES `Usuario` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Endereco` (
+CREATE TABLE IF NOT EXISTS `Endereco` (
   `end_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `end_estado` varchar(255) NOT NULL,
   `end_cidade` varchar(255) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `Endereco` (
   CONSTRAINT `fk_Usuario_Endereco` FOREIGN KEY (`usu_id`) REFERENCES `Usuario` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `PessoasDoses` (
+CREATE TABLE IF NOT EXISTS `PessoasDoses` (
   `pes_id` int NOT NULL,
   `dos_id` int NOT NULL,
   `end_id` int NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE `PessoasDoses` (
   CONSTRAINT `fk_end_PessoasDoses` FOREIGN KEY (`end_id`) REFERENCES `Endereco` (`end_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Empresa` (
+CREATE TABLE IF NOT EXISTS `Empresa` (
   `emp_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `emp_nome` varchar(255) NOT NULl,
   `emp_cnpj` varchar(14) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE `Empresa` (
   CONSTRAINT `fk_Usuario_Empresa` FOREIGN KEY (`usu_id`) REFERENCES `Usuario` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Lotes` (
+CREATE TABLE IF NOT EXISTS `Lotes` (
   `lot_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `lot_codigo` varchar(255) NOT NULl,
   `lot_numeros_de_caixas` int NOT NULL,

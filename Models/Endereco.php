@@ -15,26 +15,26 @@ class Endereco
     public function __set($atributo, $value): void
     {
         if ($atributo == 'estado'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'cidade'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'cep'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'numero'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'usuario'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
     }
 
 
     public function __get($atributo)
     {
-        return $this->atributo;
+        return $this->$atributo;
     }
 
 }

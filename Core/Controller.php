@@ -13,6 +13,7 @@ abstract class Controller
     {
         require_once 'Views/template/template.php';
     }
+
     public function carregarTemplateDoSistema(string $nomeView, array $dadosModel): void
     {
         require_once 'Views/template/templateDoSistema.php';
@@ -23,4 +24,24 @@ abstract class Controller
         extract($dadosModel);
         require_once 'Views/' . $nomeView . '.php';
     }
+
+    protected function sessaoDesligada(): void
+    {
+        if( !empty( $_SESSION['usu_id'])
+        && !empty( $_SESSION['usu_nome'])
+        && !empty( $_SESSION['usu_email'])){
+            header('Location: sistema');
+            exit;
+        }
+    }
+    protected function sessaoLigada()
+    {
+        if( empty( $_SESSION['usu_id'])
+        && empty( $_SESSION['usu_nome'])
+        && empty( $_SESSION['usu_email'])){
+            header('Location: home');
+            exit;
+        }
+    }
+    
 }

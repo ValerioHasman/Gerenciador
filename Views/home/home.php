@@ -18,7 +18,7 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
+<!-- Modal login -->
 <div class="modal fade" id="logar" tabindex="-1" aria-labelledby="logarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -27,15 +27,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="Home/index" method="POST">
           <div class="mb-3">
             <label for="email" class="form-label">Endereco de Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail.</div>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha">
+            <input type="password" class="form-control" id="senha" name="senha">
           </div>
           <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
@@ -46,7 +46,7 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
+<!-- Modal cadastro -->
 <div class="modal fade" id="cadastrar" tabindex="-1" aria-labelledby="cadastrarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -55,30 +55,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="Home/index" method="POST">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Endereco de Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail.</div>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha">
+            <input type="password" class="form-control" id="senha" name="senha">
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Confirmar senha</label>
-            <input type="password" class="form-control" id="senha">
+            <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha">
           </div>
-          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

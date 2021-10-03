@@ -14,26 +14,26 @@ class Lotes
     public function __set($atributo, $value): void
     {
         if ($atributo == 'codigo'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'caixas'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'unidades'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'endereco'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
         if ($atributo == 'empresa'){
-            $this->atributo = $value;
+            $this->$atributo = $value;
         }
     }
 
 
     public function __get($atributo)
     {
-        return $this->atributo;
+        return $this->$atributo;
     }
 
 }
