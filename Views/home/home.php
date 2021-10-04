@@ -30,12 +30,12 @@
         <form action="Home/index" method="POST">
           <div class="mb-3">
             <label for="email" class="form-label">Endereco de Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail.</div>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha">
+            <input type="password" class="form-control" id="senha" name="senha" required>
           </div>
           <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
@@ -58,20 +58,20 @@
         <form action="Home/index" method="POST">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Endereco de Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail.</div>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha">
+            <input type="password" class="form-control" id="senha" name="senha" required>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Confirmar senha</label>
-            <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha">
+            <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha" required>
           </div>
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

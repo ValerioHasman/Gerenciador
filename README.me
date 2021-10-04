@@ -1,9 +1,16 @@
-Versão do php usada: 8.0.10
+Para que o sistema funcione
+{
 
-Execute a base de dados "mysql.sql".
+    Versão do php usada: 8.0.10;
 
-O nome do diretorio raiz deve ser: "Gerenciador".
+    Execute a base de dados "mysql.sql";
 
-Vapara Models/Conexao.php e mude os valores de conexão para suas configurações.
+    O nome do diretorio raiz deve ser: "C:\xampp\htdocs\Gerenciador"
+        ou mude os valores de $GLOBALS['base'] que se enconta index.php na raiz deste projeto
+        para o caminho raiz da url do servidor com a pasta 'Gerenciador/' aberta;
 
-Este projeto precisa de conexão com a internet.
+    Vá para Models/Conexao.php e mude os valores de conexão para suas configurações;
+
+    Este projeto precisa de conexão com a internet para carregar o bootstrep;
+
+}

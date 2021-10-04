@@ -25,21 +25,17 @@ abstract class Controller
         require_once 'Views/' . $nomeView . '.php';
     }
 
-    protected function sessaoDesligada(): void
+    protected function sessaoLigada(): void
     {
-        if( !empty( $_SESSION['usu_id'])
-        && !empty( $_SESSION['usu_nome'])
-        && !empty( $_SESSION['usu_email'])){
-            header('Location: sistema');
+        if( !empty($_SESSION['usu_id']) ){
+            header('Location: ' . $GLOBALS["base"] . 'sistema/index');
             exit;
         }
     }
-    protected function sessaoLigada()
+    protected function sessaoDesligada(): void
     {
-        if( empty( $_SESSION['usu_id'])
-        && empty( $_SESSION['usu_nome'])
-        && empty( $_SESSION['usu_email'])){
-            header('Location: home');
+        if( empty($_SESSION['usu_id']) ){
+            header('Location: ' . $GLOBALS["base"] . 'home/index');
             exit;
         }
     }

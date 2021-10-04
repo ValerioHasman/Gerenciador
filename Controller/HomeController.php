@@ -6,7 +6,7 @@ class HomeController extends Controller
     public function index(): void
     {
         
-        $this->sessaoDesligada();
+        $this->sessaoLigada();
         
         if (!empty($_POST['email'] ) && !empty($_POST['senha']) && empty($_POST['nome']) ){
 
