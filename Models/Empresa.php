@@ -11,7 +11,7 @@ class Empresa
 
     public function __set($atributo, $value): void
     {
-        if ($atributo == 'name'){
+        if ($atributo == 'nome'){
             $this->$atributo = $value;
         }
         if ($atributo == 'cnpj'){
@@ -24,15 +24,15 @@ class Empresa
         return $this->$atributo;
     }
 
-    public function buscarDoBanco(): array|false
+    public static function buscarDoBanco(): array|false
     {
         $sql = Conexao::getConexao()->prepare("SELECT emp_id, emp_nome, emp_cnpj FROM Empresa WHERE usu_id = :id");
         $sql->bindValue(":id",$_SESSION['usu_id']);
         $sql->execute();
         if($sql->rowCount() > 0){
-            return array('<div class="form-control alert-warning">Vazio! Faça o teu primeiro cadastro de dados</div>');
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
         }
-        return $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array('vazio' => '<div class="form-control alert-warning">Vazio! Faça o teu primeiro cadastro de dados</div>');
     }
 
     public function inserirNoBanco(): void
@@ -51,6 +51,14 @@ class Empresa
         $sql->bindValue(":id",$this->id);
         $sql->bindValue(":nome",$this->nome);
         $sql->bindValue(":cnpj",$this->cnpj);
+        $sql->bindValue(":usuario",$_SESSION["usu_id"]);
+        $sql->execute();
+    }
+
+    public function apagarNoBanco(): void
+    {
+        $sql = Conexao::getConexao()->prepare("DELETE FROM Epresea WHERE emp_id = :id AND usu_id = :usuario");
+        $sql->bindValue(":id",$this->id);
         $sql->bindValue(":usuario",$_SESSION["usu_id"]);
         $sql->execute();
     }

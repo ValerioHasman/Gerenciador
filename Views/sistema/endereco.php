@@ -10,8 +10,10 @@ if (isset($vazio)) {
       <tr>
         <th scope="row"></th>
         <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">CPF</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">CEP</th>
+        <th scope="col">Numero</th>
       </tr>
     </thead>
     <tbody>

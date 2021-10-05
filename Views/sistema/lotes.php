@@ -11,7 +11,11 @@ if (isset($vazio)) {
         <th scope="row"></th>
         <th scope="col">ID</th>
         <th scope="col">Nome</th>
-        <th scope="col">CPF</th>
+        <th scope="col">Codigo</th>
+        <th scope="col">Caixas</th>
+        <th scope="col">Unidades</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Cidade</th>
       </tr>
     </thead>
     <tbody>

@@ -32,15 +32,15 @@ class Endereco
         return $this->$atributo;
     }
 
-    public function buscarDoBanco(): array|false
+    public static function buscarDoBanco(): array|false
     {
         $sql = Conexao::getConexao()->prepare("SELECT end_id, end_estado, end_cidade, end_cep, end_numero FROM Endereco WHERE usu_id = :id");
         $sql->bindValue(":id",$_SESSION['usu_id']);
         $sql->execute();
         if($sql->rowCount() > 0){
-            return array('<div class="form-control alert-warning">Vazio! Faça o teu primeiro cadastro de dados</div>');
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
         }
-        return $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array('vazio' => '<div class="form-control alert-warning">Vazio! Faça o teu primeiro cadastro de dados</div>');
     }
 
     public function inserirNoBanco(): void
@@ -66,4 +66,13 @@ class Endereco
         $sql->bindValue(":usuario",$_SESSION["usu_id"]);
         $sql->execute();
     }
+
+    public function apagarNoBanco(): void
+    {
+        $sql = Conexao::getConexao()->prepare("DELETE FROM Endereco WHERE end_id = :id AND usu_id = :usuario");
+        $sql->bindValue(":id",$this->id);
+        $sql->bindValue(":usuario",$_SESSION["usu_id"]);
+        $sql->execute();
+    }
+
 }

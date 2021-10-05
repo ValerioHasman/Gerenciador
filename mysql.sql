@@ -68,8 +68,11 @@ CREATE TABLE IF NOT EXISTS `Lotes` (
   `lot_numeros_de_unidades_por_caixa` int NOT NULL,
   `end_id` int NOT NULL,
   `emp_id` int NOT NULL,
+  `dos_id` int NOT NULL,
   INDEX `fk_Endereco_Lotes` (`end_id`),
   INDEX `fk_Empresa_Lotes` (`emp_id`),
+  INDEX `fk_Doses_Lotes` (`dos_id`),
   CONSTRAINT `fk_Endereco_Lotes` FOREIGN KEY (`end_id`) REFERENCES `Endereco` (`end_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Empresa_Lotes` FOREIGN KEY (`emp_id`) REFERENCES `Empresa` (`emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Empresa_Lotes` FOREIGN KEY (`emp_id`) REFERENCES `Empresa` (`emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Doses_Lotes` FOREIGN KEY (`dos_id`) REFERENCES `Doses` (`dos_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

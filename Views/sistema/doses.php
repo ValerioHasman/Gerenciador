@@ -11,7 +11,6 @@ if (isset($vazio)) {
         <th scope="row"></th>
         <th scope="col">ID</th>
         <th scope="col">Nome</th>
-        <th scope="col">CPF</th>
       </tr>
     </thead>
     <tbody>
