@@ -13,13 +13,11 @@ class Usuario
     public function __set($atributo, $value): void
     {
         if ($atributo == 'nome'){
-            $value = trim($value);
-            filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'email'){
-            filter_var($value, FILTER_SANITIZE_EMAIL);
-            $this->$atributo = $value;
+           
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_EMAIL);
         }
         if ($atributo == 'senha'){
             $this->$atributo = md5(trim($value));

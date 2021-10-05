@@ -11,7 +11,12 @@ class SistemaController extends Controller
             $pessoa = new Pessoas();
             $pessoa->nome = $_POST['nome'];
             $pessoa->cpf = $_POST['cpf'];
-            $pessoa->inserirNoBanco();
+            if (isset($_POST['id']) && $_POST['id'] > 0){
+                $pessoa->id = $_POST['id'];
+                $pessoa->atualizarNoBanco();
+            } else {
+                $pessoa->inserirNoBanco();
+            }
         }
         
         $this->carregarTemplateDoSistema('sistema/sistema', Pessoas::buscarDoBanco());
@@ -21,14 +26,19 @@ class SistemaController extends Controller
         $this->sessaoDesligada();
 
         if (isset($_POST['nome']) && isset($_POST['codigo']) && isset($_POST['caixas']) && isset($_POST['unidades']) && isset($_POST['empresa']) && isset($_POST['endereco'])){
-            $empresa = new Lotes();
-            $empresa->nome = $_POST['nome'];
-            $empresa->codigo = $_POST['codigo'];
-            $empresa->caixas = $_POST['caixas'];
-            $empresa->unidades = $_POST['unidades'];
-            $empresa->empresa = $_POST['empresa'];
-            $empresa->endereco = $_POST['endereco'];
-            $empresa->inserirNoBanco();
+            $lotes = new Lotes();
+            $lotes->nome = $_POST['nome'];
+            $lotes->codigo = $_POST['codigo'];
+            $lotes->caixas = $_POST['caixas'];
+            $lotes->unidades = $_POST['unidades'];
+            $lotes->empresa = $_POST['empresa'];
+            $lotes->endereco = $_POST['endereco'];
+            if (isset($_POST['id']) && $_POST['id'] > 0){
+                $lotes->id = $_POST['id'];
+                $lotes->atualizarNoBanco();
+            } else {
+                $lotes->inserirNoBanco();
+            }
         }
         
         $this->carregarTemplateDoSistema('sistema/lotes', Lotes::buscarDoBanco());
@@ -38,12 +48,17 @@ class SistemaController extends Controller
         $this->sessaoDesligada();
         
         if (isset($_POST['estado']) && isset($_POST['cidade']) && isset($_POST['cep']) && isset($_POST['numero'])){
-            $empresa = new Endereco();
-            $empresa->estado = $_POST['estado'];
-            $empresa->cidade = $_POST['cidade'];
-            $empresa->cep = $_POST['cep'];
-            $empresa->numero = $_POST['numero'];
-            $empresa->inserirNoBanco();
+            $endereco = new Endereco();
+            $endereco->estado = $_POST['estado'];
+            $endereco->cidade = $_POST['cidade'];
+            $endereco->cep = $_POST['cep'];
+            $endereco->numero = $_POST['numero'];
+            if (isset($_POST['id']) && $_POST['id'] > 0){
+                $endereco->id = $_POST['id'];
+                $endereco->atualizarNoBanco();
+            } else {
+                $endereco->inserirNoBanco();
+            }
         }
 
         $this->carregarTemplateDoSistema('sistema/endereco', Endereco::buscarDoBanco());
@@ -56,7 +71,12 @@ class SistemaController extends Controller
             $empresa = new Empresa();
             $empresa->nome = $_POST['nome'];
             $empresa->cnpj = $_POST['cnpj'];
-            $empresa->inserirNoBanco();
+            if (isset($_POST['id']) && $_POST['id'] > 0){
+                $empresa->id = $_POST['id'];
+                $empresa->atualizarNoBanco();
+            } else {
+                $empresa->inserirNoBanco();
+            }
         }
         
         $this->carregarTemplateDoSistema('sistema/empresa', Empresa::buscarDoBanco());
@@ -68,7 +88,12 @@ class SistemaController extends Controller
         if (isset($_POST['nome'])){
             $doses = new Doses();
             $doses->nome = $_POST['nome'];
-            $doses->inserirNoBanco();
+            if (isset($_POST['id']) && $_POST['id'] > 0){
+                $doses->id = $_POST['id'];
+                $doses->atualizarNoBanco();
+            } else {
+                $doses->inserirNoBanco();
+            }
         }
         
         $this->carregarTemplateDoSistema('sistema/doses', Doses::buscarDoBanco());

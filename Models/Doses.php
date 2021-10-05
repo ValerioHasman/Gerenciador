@@ -10,8 +10,11 @@ class Doses
 
     public function __set($atributo, $value): void
     {
+        if ($atributo == 'id'){
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+        }
         if ($atributo == 'nome'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
     }
 
@@ -44,7 +47,6 @@ class Doses
         $sql = Conexao::getConexao()->prepare("UPDATE Doses SET dos_nome = :nome WHERE dos_id = :id AND usu_id = :usuario");
         $sql->bindValue(":id",$this->id);
         $sql->bindValue(":nome",$this->nome);
-        $sql->bindValue(":cpf",$this->cpf);
         $sql->bindValue(":usuario",$_SESSION["usu_id"]);
         $sql->execute();
     }

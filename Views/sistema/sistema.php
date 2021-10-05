@@ -1,3 +1,5 @@
+<h3>Pessoas registradas</h3>
+
 <?php
 
 if (isset($vazio)) {
@@ -19,10 +21,12 @@ if (isset($vazio)) {
 
   foreach ($dadosModel as $array){
     echo '<tr><th scope="row"></th>';
+    $whatever = new Editar();
     foreach ($array as $chave => $valor){
       echo "<td>" . $valor . "</td>";
+      $whatever->whatevers = 'data-bs-whatever'. substr($chave, 3) .'="' . $valor .'" ';
     }
-  echo "</tr>";
+    echo '<td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#pessoas" '. $whatever->whatevers .' >Editar</button></td></tr>';
   }
 echo "</tbody></table>";
 }

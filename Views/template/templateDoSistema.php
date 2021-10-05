@@ -11,6 +11,7 @@
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.js">
     </script>
+    <script defer src="roteiro/roteiro.js"></script>
     <link rel="stylesheet" href="formatar/estilo.css">
     <link rel="shortcut icon" href="midias/ICONE.ico" type="image/x-icon">
     <title>Gerenciador</title>
@@ -70,6 +71,7 @@
                     <form class="row g-3" action="sistema/index" method="POST">
                         <div class="col-md-6">
                             <label for="pessoasNome" class="form-label">Nome</label>
+                            <input type="hidden" id="pessoasId" name="id">
                             <input type="text" class="form-control" name="nome" id="pessoasNome" maxlength="255" required>
                         </div>
                         <div class="col-md-6">
@@ -77,7 +79,7 @@
                             <input type="text" class="form-control" id="pessoasCpf" name="cpf" maxlength="11" required>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Executar</button>
                         </div>
                     </form>
                 </div>
@@ -98,8 +100,9 @@
                 <div class="modal-body">
                     <form class="row g-3" action="sistema/endereco" method="POST">
                         <div class="col-md-6">
-                            <label for="enderecoNome" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="enderecoNome" name="estado" maxlength="255" required>
+                            <label for="enderecoEstado" class="form-label">Estado</label>
+                            <input type="hidden" id="enderecoId" name="id">
+                            <input type="text" class="form-control" id="enderecoEstado" name="estado" maxlength="255" required>
                         </div>
                         <div class="col-md-6">
                             <label for="enderecoCidade" class="form-label">Cidade</label>
@@ -114,7 +117,7 @@
                             <input type="text" class="form-control" id="enderecoNumero" name="numero" maxlength="9" required>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Executar</button>
                         </div>
                     </form>
                 </div>
@@ -136,14 +139,15 @@
                     <form class="row g-3" action="sistema/empresa" method="POST">
                         <div class="col-md-6">
                             <label for="empresaNome" class="form-label">Nome</label>
+                            <input type="hidden" id="empresaId" name="id">
                             <input type="text" class="form-control" id="empresaNome" name="nome" maxlength="255" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="empresaCNPJ" class="form-label">CNPJ</label>
-                            <input type="text" class="form-control" id="empresaCNPJ" name="cnpj" maxlength="18" required>
+                            <label for="empresaCnpj" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control" id="empresaCnpj" name="cnpj" maxlength="18" required>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Executar</button>
                         </div>
                     </form>
                 </div>
@@ -165,16 +169,16 @@
                     <form class="row g-3" action="sistema/doses" method="POST">
                         <div class="col-md-6">
                             <label for="dosesNome" class="form-label">Nome</label>
+                            <input type="hidden" id="dosesId" name="id">
                             <input type="text" class="form-control" id="dosesNome" name="nome" maxlength="255" required>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Executar</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -191,6 +195,7 @@
                     <form class="row g-3" action="sistema/lotes" method="POST">
                         <div class="col-md-6">
                             <label for="lotesNome" class="form-label">Nome</label>
+                            <input type="hidden" id="lotesId" name="id">
                             <input type="text" class="form-control" id="lotesNome" name="nome" maxlength="255" required>
                         </div>
                         <div class="col-md-6">
@@ -214,7 +219,7 @@
                             <input type="text" class="form-control" id="lotesEmpresa" name="empresa" required>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Executar</button>
                         </div>
                     </form>
                 </div>

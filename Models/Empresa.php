@@ -11,11 +11,14 @@ class Empresa
 
     public function __set($atributo, $value): void
     {
+        if ($atributo == 'id'){
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+        }
         if ($atributo == 'nome'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'cnpj'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
     }
 

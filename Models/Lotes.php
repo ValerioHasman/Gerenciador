@@ -13,20 +13,23 @@ class Lotes
 
     public function __set($atributo, $value): void
     {
+        if ($atributo == 'id'){
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+        }
         if ($atributo == 'codigo'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'caixas'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'unidades'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'endereco'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'empresa'){
-            $this->$atributo = $value;
+            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
     }
 
@@ -37,7 +40,7 @@ class Lotes
 
     public static function buscarDoBanco(): array|false
     {
-        $sql = Conexao::getConexao()->prepare("SELECT lot_id, doses.dos_nome, lot_codigo, lot_numeros_de_caixas, lot_numeros_de_unidades_por_caixa, endereco.end_cidade, empresa.emp_nome FROM usuario
+        $sql = Conexao::getConexao()->prepare("SELECT lot_id, doses.dos_nome, lot_codigo, lot_numeros_de_caixas, lot_numeros_de_unidades_por_caixa, empresa.emp_nome emp_empresa , endereco.end_cidade FROM usuario
         INNER JOIN empresa ON (usuario.usu_id = empresa.usu_id)
         INNER JOIN lotes ON (lotes.emp_id = empresa.emp_id)
         INNER JOIN doses ON (doses.dos_id = lotes.dos_id)
