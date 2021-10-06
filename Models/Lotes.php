@@ -3,11 +3,12 @@
 class Lotes
 {
     private ?int $id;
+    private string $doses;
     private string $codigo;
     private int $caixas;
     private int $unidades;
-    private Endereco $endereco;
-    private Empresa $empresa;
+    private int $endereco;
+    private int $empresa;
 
     public function __construct(){}
 
@@ -16,20 +17,23 @@ class Lotes
         if ($atributo == 'id'){
             $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
+        if ($atributo == 'doses'){
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+        }
         if ($atributo == 'codigo'){
             $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'caixas'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'unidades'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'endereco'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'empresa'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
     }
 
@@ -67,13 +71,16 @@ class Lotes
     }
     public function atualizarNoBanco(): void
     {
-        $sql = Conexao::getConexao()->prepare("UPDATE Lotes SET lot_codigo = :codigo, lot_caixas = :caixas, lot_unidades = :unidades, lot_endereco = :endereco, lot_empresa = :empresa WHERE dos_id = :id AND usu_id = :usuario");
+        $sql = Conexao::getConexao()->prepare("UPDATE Lotes SET dos_id = :doses, lot_codigo = :codigo, lot_numeros_de_caixas = :caixas, lot_numeros_de_unidades_por_caixa = :unidades, end_id = :endereco, emp_id = :empresa WHERE lot_id = :id");
+        $sql->bindValue(":id",$this->id);
+        $sql->bindValue(":doses",$this->doses);
         $sql->bindValue(":codigo",$this->codigo);
         $sql->bindValue(":caixas",$this->caixas);
         $sql->bindValue(":unidades",$this->unidades);
         $sql->bindValue(":endereco",$this->endereco);
         $sql->bindValue(":empresa",$this->empresa);
         $sql->execute();
+        
     }
     
     public function apagarNoBanco(): void

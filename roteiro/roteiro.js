@@ -114,7 +114,7 @@ lotes.addEventListener('show.bs.modal', function (event) {
     var lotesEnderecoInput = lotes.querySelector('.modal-body #lotesEndereco')
     var lotesEmpresaInput = lotes.querySelector('.modal-body #lotesEmpresa')
 
-    modalTitle.textContent = 'New message to ' + lotes
+    modalTitle.textContent = 'Lotes - Coloque as IDs para dose, endereco e empresas'
     lotesIdInput.value = lotesId
     lotesNomeInput.value = lotesNome
     lotesCodigoInput.value = lotesCodigo
@@ -122,4 +122,26 @@ lotes.addEventListener('show.bs.modal', function (event) {
     lotesUnidadeInput.value = lotesUnidade
     lotesEnderecoInput.value = lotesEndereco
     lotesEmpresaInput.value = lotesEmpresa
+})
+var imunizados = document.getElementById('imunizados')
+imunizados.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    var button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    var imunizadosPessoas = button.getAttribute('data-bs-whatever_pes')
+    var imunizadosDoses = button.getAttribute('data-bs-whatever_dos')
+    var imunizadosEndereco = button.getAttribute('data-bs-whatever_end')
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    //
+    // Update the modal's content.
+    var modalTitle = imunizados.querySelector('.modal-title')
+    var imunizadosPessoasInput = imunizados.querySelector('.modal-body #imunizadosPessoas')
+    var imunizadosDosesInput = imunizados.querySelector('.modal-body #imunizadosDoses')
+    var imunizadosEnderecoInput = imunizados.querySelector('.modal-body #imunizadosEndereco')
+
+    modalTitle.textContent = 'imunizados - coloque as IDs'
+    imunizadosPessoasInput.value = imunizadosPessoas
+    imunizadosDosesInput.value = imunizadosDoses
+    imunizadosEnderecoInput.value = imunizadosEndereco
 })

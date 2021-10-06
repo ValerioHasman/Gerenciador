@@ -21,23 +21,41 @@ class SistemaController extends Controller
         
         $this->carregarTemplateDoSistema('sistema/sistema', Pessoas::buscarDoBanco());
     }
+    public function imunizados(): void
+    {
+        $this->sessaoDesligada();
+
+        if (isset($_POST['nome']) && isset($_POST['doses']) && isset($_POST['local'])){
+            $imuni = new PessoasDoses();
+            $imuni->pessoas = $_POST['nome'];
+            $imuni->doses = $_POST['dose'];
+            $imuni->esnderecos = $_POST['local'];
+            $imuni->inserirNoBanco();
+        }
+        
+        $this->carregarTemplateDoSistema('sistema/imunizados', PessoasDoses::buscarDoBanco());
+    }
     public function lotes(): void
     {
         $this->sessaoDesligada();
 
         if (isset($_POST['nome']) && isset($_POST['codigo']) && isset($_POST['caixas']) && isset($_POST['unidades']) && isset($_POST['empresa']) && isset($_POST['endereco'])){
             $lotes = new Lotes();
-            $lotes->nome = $_POST['nome'];
+            $lotes->doses = $_POST['nome'];
             $lotes->codigo = $_POST['codigo'];
             $lotes->caixas = $_POST['caixas'];
             $lotes->unidades = $_POST['unidades'];
             $lotes->empresa = $_POST['empresa'];
             $lotes->endereco = $_POST['endereco'];
-            if (isset($_POST['id']) && $_POST['id'] > 0){
-                $lotes->id = $_POST['id'];
-                $lotes->atualizarNoBanco();
-            } else {
-                $lotes->inserirNoBanco();
+            try {
+                if (isset($_POST['id']) && $_POST['id'] > 0){
+                    $lotes->id = $_POST['id'];
+                    $lotes->atualizarNoBanco();
+                } else {
+                    $lotes->inserirNoBanco();
+                }
+            } catch (PDOException $e) {
+                echo "<div class='form-control bg-warning'>Dados inválidos! Verifique os campos e se os dados existem!</div>";
             }
         }
         

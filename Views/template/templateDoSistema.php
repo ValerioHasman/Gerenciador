@@ -30,6 +30,7 @@
                     <li class="nav-item"><a class="nav-link" href="sistema/endereco">Enderecos</a></li>
                     <li class="nav-item"><a class="nav-link" href="sistema/empresa">Empresas</a></li>
                     <li class="nav-item"><a class="nav-link" href="sistema/doses">Doses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sistema/imunizados">Imunizados</a></li>
                     <li class="nav-item"><a class="nav-link" href="sistema/lotes">Lotes</a></li>
 
 
@@ -44,6 +45,7 @@
                             <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#empresas">Empresas</button></li>
                             <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doses">Doses</button></li>
                             <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#lotes">Lotes</button></li>
+                            <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#imunizados">Imunizados</button></li>
                         </ul>
                     </li>
                 </ul>
@@ -53,12 +55,13 @@
             </div>
         </div>
     </nav>
-
+    <div class="container my-4 bg-white p-3 bg-opacity-25 rounded-3">
     <?php
 
     $this->carregarViewNoTemplate($nomeView, $dadosModel);
 
     ?>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="pessoas" tabindex="-1" aria-labelledby="pessoasLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -196,7 +199,7 @@
                         <div class="col-md-6">
                             <label for="lotesNome" class="form-label">Nome</label>
                             <input type="hidden" id="lotesId" name="id">
-                            <input type="text" class="form-control" id="lotesNome" name="nome" maxlength="255" required>
+                            <input type="number" class="form-control" id="lotesNome" name="nome" maxlength="255" required>
                         </div>
                         <div class="col-md-6">
                             <label for="lotesCodigo" class="form-label">Código</label>
@@ -204,19 +207,19 @@
                         </div>
                         <div class="col-md-6">
                             <label for="lotesCaixa" class="form-label">Numero de caixas</label>
-                            <input type="text" class="form-control" id="lotesCaixa" name="caixas" required>
+                            <input type="number" class="form-control" id="lotesCaixa" name="caixas" required>
                         </div>
                         <div class="col-md-6">
                             <label for="lotesUnidade" class="form-label">Numero de unidades por caixa</label>
-                            <input type="text" class="form-control" id="lotesUnidade" name="unidades" required>
+                            <input type="number" class="form-control" id="lotesUnidade" name="unidades" required>
                         </div>
                         <div class="col-md-6">
                             <label for="lotesEndereco" class="form-label">Endereço</label>
-                            <input type="text" class="form-control" id="lotesEndereco" name="endereco" required>
+                            <input type="number" class="form-control" id="lotesEndereco" name="endereco" required>
                         </div>
                         <div class="col-md-6">
                             <label for="lotesEmpresa" class="form-label">Empresa</label>
-                            <input type="text" class="form-control" id="lotesEmpresa" name="empresa" required>
+                            <input type="number" class="form-control" id="lotesEmpresa" name="empresa" required>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Executar</button>
@@ -225,7 +228,39 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="imunizados" tabindex="-1" aria-labelledby="imunizadosLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imunizadosLabel">imunizados</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3" action="sistema/imunizados" method="POST">
+                        <div class="col-md-6">
+                            <label for="imunizadosPessoas" class="form-label">Nome</label>
+                            <input type="number" class="form-control" id="imunizadosPessoas" name="nome" maxlength="255" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="imunizadosDoses" class="form-label">Imunizante</label>
+                            <input type="number" class="form-control" id="imunizadosDoses" name="dose" maxlength="255" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="imunizadosEndereco" class="form-label">Endereços</label>
+                            <input type="number" class="form-control" id="imunizadosEndereco" name="local" maxlength="255" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Executar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
