@@ -12,13 +12,13 @@ class PessoasDoses
     public function __set($atributo, $value): void
     {
         if ($atributo == 'pessoas'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'doses'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if ($atributo == 'endereco'){
-            $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+            $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
         }
     }
 
