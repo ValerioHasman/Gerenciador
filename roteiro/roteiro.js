@@ -123,38 +123,3 @@ lotes.addEventListener('show.bs.modal', function (event) {
     lotesEnderecoInput.value = lotesEndereco
     lotesEmpresaInput.value = lotesEmpresa
 })
-var imunizados = document.getElementById('imunizados')
-imunizados.addEventListener('show.bs.modal', function (event) {
-    // Button that triggered the modal
-    var button = event.relatedTarget
-    // Extract info from data-bs-* attributes
-    var imunizadosPessoasId = button.getAttribute('data-bs-whatever_pesid')
-    var imunizadosPessoas = button.getAttribute('data-bs-whatever_pes')
-    var imunizadosDosesId = button.getAttribute('data-bs-whatever_dosid')
-    var imunizadosDoses = button.getAttribute('data-bs-whatever_dos')
-    var imunizadosEnderecoId = button.getAttribute('data-bs-whatever_endid')
-    var imunizadosEndereco = button.getAttribute('data-bs-whatever_end')
-    // If necessary, you could initiate an AJAX request here
-    // and then do the updating in a callback.
-    //
-    // Update the modal's content.
-    var modalTitle = imunizados.querySelector('.modal-title')
-    var imunizadosPessoasIdInput = imunizados.querySelector('.modal-body #imunizadosPessoasId')
-    var imunizadosPessoasInput = imunizados.querySelector('.modal-body #imunizadosPessoas')
-    var imunizadosDosesIdInput = imunizados.querySelector('.modal-body #imunizadosDosesId')
-    var imunizadosDosesInput = imunizados.querySelector('.modal-body #imunizadosDoses')
-    var imunizadosEnderecoIdInput = imunizados.querySelector('.modal-body #imunizadosEnderecoId')
-    var imunizadosEnderecoInput = imunizados.querySelector('.modal-body #imunizadosEndereco')
-
-    modalTitle.textContent = 'imunizados - coloque as IDs'
-    imunizadosPessoasInput.value = imunizadosPessoas
-    imunizadosDosesInput.value = imunizadosDoses
-    imunizadosEnderecoInput.value = imunizadosEndereco
-})
-
-data-bs-whatever_pesid="1"
-data-bs-whatever_pes="Valério Luz Hasman Junior"
-data-bs-whatever_dosid="1"
-data-bs-whatever_dos="coronavac"
-data-bs-whatever_endid="3"
-data-bs-whatever_end="serg"
