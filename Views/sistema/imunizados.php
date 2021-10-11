@@ -3,30 +3,32 @@
 <?php
 
 if (isset($vazio)) {
-  echo $vazio;
+    echo $vazio;
 } else {
 ?>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="row"></th>
-        <th scope="col">Nome</th>
-        <th scope="col">Doses</th>
-        <th scope="col">Cidades</th>
-      </tr>
-    </thead>
-    <tbody>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="row"></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Doses</th>
+                <th scope="col">Cidades</th>
+            </tr>
+        </thead>
+        <tbody>
 <?php
 
-  foreach ($dadosModel as $array){
-    echo '<tr><th scope="row"></th>';
-    $whatever = new Editar();
-    foreach ($array as $chave => $valor){
-      echo "<td>" . $valor . "</td>";
-      $whatever->whatevers = 'data-bs-whatever'. $chave .'="' . $valor .'" ';
+    foreach ($dadosModel as $array){
+        echo "\n<form action='sistema/imunizados' method='POST'><tr><th scope='row'></th>";
+        foreach ($array as $chave => $valor){
+            if (substr($chave, -2) == 'id'){
+                echo "\n<input type='number' hidden name='$chave' value='$valor'>";
+            } else {
+                echo "<td>$valor</td>";
+            }
+        }
+        echo "<td><button type='submit' class='btn btn-danger'>Apagar</button></td></tr></form>";
     }
-    echo '<td><button type="button" class="btn btn-warning disabled" data-bs-toggle="modal" data-bs-target="#imunizados" '. $whatever->whatevers .' >Editar</button></td></tr>';
-  }
 echo "</tbody></table>";
 }

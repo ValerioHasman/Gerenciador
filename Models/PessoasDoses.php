@@ -29,7 +29,7 @@ class PessoasDoses
 
     public static function buscarDoBanco(): array|false
     {
-        $sql = Conexao::getConexao()->prepare("SELECT pessoas.pes_nome _pes, doses.dos_nome _dos, endereco.end_cidade _end FROM pessoasdoses
+        $sql = Conexao::getConexao()->prepare("SELECT pessoas.pes_id _pesid, pessoas.pes_nome _pes, doses.dos_id _dosid, doses.dos_nome _dos, endereco.end_id _endid, endereco.end_cidade _end FROM pessoasdoses
         INNER JOIN pessoas ON (pessoas.pes_id = pessoasdoses.pes_id)
         INNER JOIN doses ON (doses.dos_id = pessoasdoses.dos_id)
         INNER JOIN endereco ON (endereco.end_id = pessoasdoses.end_id)
@@ -45,11 +45,10 @@ class PessoasDoses
 
     public function inserirNoBanco(): void
     {
-        $sql = Conexao::getConexao()->prepare("INSERT INTO `pessoasdoses` (`pes_id`, `dos_id`, `end_id`) VALUES (:pessoas, :doses, :enderecos)");
+        $sql = Conexao::getConexao()->prepare("INSERT INTO `pessoasdoses` (`pes_id`, `dos_id`, `end_id`) VALUES (:pessoas, :doses, :endereco)");
         $sql->bindValue(":pessoas",$this->pessoas);
         $sql->bindValue(":doses",$this->doses);
         $sql->bindValue(":endereco",$this->endereco);
-        $sql->bindValue(":usuario",$_SESSION["usu_id"]);
         $sql->execute();
     }
 
@@ -65,9 +64,14 @@ class PessoasDoses
 
     public function apagarNoBanco(): void
     {
-        $sql = Conexao::getConexao()->prepare("DELETE FROM Pessoas WHERE pes_id = :id AND usu_id = :usuario");
-        $sql->bindValue(":id",$this->id);
-        $sql->bindValue(":usuario",$_SESSION["usu_id"]);
+        $sql = Conexao::getConexao()->prepare("DELETE pessoasdoses FROM `pessoasdoses`
+        INNER JOIN pessoas ON (pessoasdoses.pes_id = pessoas.pes_id)
+        INNER JOIN doses ON (pessoasdoses.dos_id = doses.dos_id)
+        INNER JOIN usuario ON (pessoas.usu_id = usuario.usu_id AND doses.usu_id = usuario.usu_id)
+        WHERE `pessoasdoses`.`pes_id` = :pesid AND `pessoasdoses`.`dos_id` = :dosid AND end_id = :endid;");
+        $sql->bindValue(":pesid",$this->pessoas);
+        $sql->bindValue(":dosid",$this->doses);
+        $sql->bindValue(":endid",$this->endereco);
         $sql->execute();
     }
     //`pes_visivel` ENUM('S','N') NOT NULL DEFAULT '\'S\''

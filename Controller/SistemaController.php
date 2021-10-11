@@ -24,13 +24,23 @@ class SistemaController extends Controller
     public function imunizados(): void
     {
         $this->sessaoDesligada();
-
-        if (isset($_POST['nome']) && isset($_POST['doses']) && isset($_POST['local'])){
+        if (isset($_POST['_dosid']) && isset($_POST['_pesid']) && isset($_POST['_endid'])){
             $imuni = new PessoasDoses();
-            $imuni->pessoas = $_POST['nome'];
-            $imuni->doses = $_POST['dose'];
-            $imuni->esnderecos = $_POST['local'];
-            $imuni->inserirNoBanco();
+            $imuni->pessoas = $_POST['_pesid'];
+            $imuni->doses = $_POST['_dosid'];
+            $imuni->endereco = $_POST['_endid'];
+            $imuni->apagarNoBanco();
+        }
+        try{
+            if (isset($_POST['nome']) && isset($_POST['dose']) && isset($_POST['local'])){
+                $imuni = new PessoasDoses();
+                $imuni->pessoas = $_POST['nome'];
+                $imuni->doses = $_POST['dose'];
+                $imuni->endereco = $_POST['local'];
+                $imuni->inserirNoBanco();
+            }
+        } catch (PDOException $e) {
+            echo "<div class='form-control bg-warning'>Dados inválidos! Verifique os campos e se os dados existem!</div>";
         }
         
         $this->carregarTemplateDoSistema('sistema/imunizados', PessoasDoses::buscarDoBanco());
