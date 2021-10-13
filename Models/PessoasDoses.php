@@ -68,10 +68,11 @@ class PessoasDoses
         INNER JOIN pessoas ON (pessoasdoses.pes_id = pessoas.pes_id)
         INNER JOIN doses ON (pessoasdoses.dos_id = doses.dos_id)
         INNER JOIN usuario ON (pessoas.usu_id = usuario.usu_id AND doses.usu_id = usuario.usu_id)
-        WHERE `pessoasdoses`.`pes_id` = :pesid AND `pessoasdoses`.`dos_id` = :dosid AND end_id = :endid;");
+        WHERE `pessoasdoses`.`pes_id` = :pesid AND `pessoasdoses`.`dos_id` = :dosid AND end_id = :endid AND usuario.usu_id = :id;");
         $sql->bindValue(":pesid",$this->pessoas);
         $sql->bindValue(":dosid",$this->doses);
         $sql->bindValue(":endid",$this->endereco);
+        $sql->bindValue(":id",$_SESSION['usu_id']);
         $sql->execute();
     }
     //`pes_visivel` ENUM('S','N') NOT NULL DEFAULT '\'S\''
