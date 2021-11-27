@@ -21,7 +21,7 @@ if (isset($vazio)) {
 
   foreach ($dadosModel as $array){
     echo '<tr><th scope="row"></th>';
-    $whatever = new Editar();
+    $whatever = new Models\Editar();
     foreach ($array as $chave => $valor){
       echo "<td>" . $valor . "</td>";
       $whatever->whatevers = 'data-bs-whatever'. substr($chave, 3) .'="' . $valor .'" ';

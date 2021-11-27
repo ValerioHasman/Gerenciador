@@ -59,7 +59,9 @@ class SistemaController extends Controller
     public function lotes(): void
     {
         $this->sessaoDesligada();
-
+        // echo('<pre>');
+        // var_dump($_POST);
+        // echo('</pre>');
         if (isset($_POST['nome']) && isset($_POST['codigo']) && isset($_POST['caixas']) && isset($_POST['unidades']) && isset($_POST['empresa']) && isset($_POST['endereco'])){
             $lotes = new Lotes();
             $lotes->doses = $_POST['nome'];
@@ -68,11 +70,16 @@ class SistemaController extends Controller
             $lotes->unidades = $_POST['unidades'];
             $lotes->empresa = $_POST['empresa'];
             $lotes->endereco = $_POST['endereco'];
+            
             try {
                 if (isset($_POST['id']) && $_POST['id'] > 0){
                     $lotes->id = $_POST['id'];
                     $lotes->atualizarNoBanco();
+                    
                 } else {
+                    echo('<pre>');
+        var_dump($lotes);
+        echo('</pre>');
                     $lotes->inserirNoBanco();
                 }
             } catch (PDOException $e) {

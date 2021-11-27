@@ -197,7 +197,7 @@
                 <div class="modal-body">
                     <form class="row g-3" action="sistema/lotes" method="POST">
                         <div class="col-md-6">
-                            <label for="lotesNome" class="form-label">Nome</label>
+                            <label for="lotesNome" class="form-label">Nome Dose</label>
                             <input type="hidden" id="lotesId" name="id">
                             <input type="number" class="form-control" id="lotesNome" name="nome" maxlength="255" required>
                         </div>

@@ -65,8 +65,9 @@ class Lotes
 
     public function inserirNoBanco(): void
     {
-        $sql = Conexao::getConexao()->prepare("INSERT INTO Lotes (lot_codigo, lot_numeros_de_caixas, lot_numeros_de_unidades_por_caixa, end_id, emp_id)
-        VALUES (:codigo, :caixas, :unidades, :endereco, :empresa)");
+        $sql = Conexao::getConexao()->prepare("INSERT INTO Lotes (dos_id, lot_codigo, lot_numeros_de_caixas, lot_numeros_de_unidades_por_caixa, end_id, emp_id)
+        VALUES (:doses, :codigo, :caixas, :unidades, :endereco, :empresa)");
+        $sql->bindValue(":doses",$this->doses);
         $sql->bindValue(":codigo",$this->codigo);
         $sql->bindValue(":caixas",$this->caixas);
         $sql->bindValue(":unidades",$this->unidades);
