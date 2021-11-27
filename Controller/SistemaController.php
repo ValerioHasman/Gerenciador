@@ -72,14 +72,10 @@ class SistemaController extends Controller
             $lotes->endereco = $_POST['endereco'];
             
             try {
-                if (isset($_POST['id']) && $_POST['id'] > 0){
+                if (isset($_POST['id']) & $_POST['id'] > 0){
                     $lotes->id = $_POST['id'];
                     $lotes->atualizarNoBanco();
-                    
                 } else {
-                    echo('<pre>');
-        var_dump($lotes);
-        echo('</pre>');
                     $lotes->inserirNoBanco();
                 }
             } catch (PDOException $e) {

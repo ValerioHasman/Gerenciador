@@ -65,10 +65,10 @@ class Pessoas
 
     public function apagarNoBanco(): void
     {
-        $sql = Conexao::getConexao()->prepare("DELETE FROM Pessoas WHERE pes_id = :id AND usu_id = :usuario");
+        $sql = Conexao::getConexao()->prepare("DELETE FROM `lotes` WHERE `lotes`.`lot_id` = :id");
         $sql->bindValue(":id",$this->id);
         $sql->bindValue(":usuario",$_SESSION["usu_id"]);
         $sql->execute();
     }
-    //`pes_visivel` ENUM('S','N') NOT NULL DEFAULT '\'S\''
+    
 }

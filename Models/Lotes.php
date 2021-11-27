@@ -91,7 +91,14 @@ class Lotes
     
     public function apagarNoBanco(): void
     {
-        $sql = Conexao::getConexao()->prepare("DELETE FROM Lotes WHERE dos_id = :id AND Usuario.usu_id = :usuario");
+        $sql = Conexao::getConexao()->prepare("DELETE lotes FROM lotes 
+        INNER JOIN empresa ON (empresa.emp_id = lotes.emp_id)
+        INNER JOIN doses ON (doses.dos_id = lotes.dos_id)
+        INNER JOIN endereco ON (endereco.end_id = lotes.end_id)
+        INNER JOIN usuario ON (usuario.usu_id = empresa.usu_id
+        AND usuario.usu_id = doses.usu_id
+        AND usuario.usu_id = endereco.usu_id)
+        WHERE usuario.usu_id = :usuario and lotes.lot_id = :id;");
         $sql->bindValue(":id",$this->id);
         $sql->bindValue(":usuario",$_SESSION["usu_id"]);
         $sql->execute();
