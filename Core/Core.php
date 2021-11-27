@@ -1,6 +1,8 @@
 <?php
 
-class Core
+namespace Core;
+
+final class Core
 {
     private string $caminho;
     private string $controller;
@@ -15,7 +17,7 @@ class Core
         $this->parametros = array();
         $this->run();
     }
-    public function run(): void
+    private function run(): void
     {
 
         if (isset($_GET['pag'])) {
@@ -41,12 +43,13 @@ class Core
             $this->metodo = 'index';
         }
 
-        $this->caminho = 'Gerenciador/Controller' . $this->controller . '.php';
+        $this->caminho = $GLOBALS['caminho'] . 'Controller\\' . $this->controller . '.php';
 
-        if (!file_exists($this->caminho) && !method_exists($this->controller, $this->metodo)) {
+        if (!file_exists($this->caminho) | !method_exists('Controller\\' . $this->controller, $this->metodo)) {
             $this->controller = 'HomeController';
             $this->metodo = 'index';
         }
+        $this->controller = 'Controller\\'. $this->controller;
         $this->c = new $this->controller;
 
         call_user_func_array(array($this->c, $this->metodo), $this->parametros);

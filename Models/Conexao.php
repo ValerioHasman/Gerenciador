@@ -1,5 +1,10 @@
 <?php
 
+namespace Models;
+
+use PDO;
+use Exception;
+
 class Conexao
 {
 

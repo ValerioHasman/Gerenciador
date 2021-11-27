@@ -1,5 +1,16 @@
 <?php
 
+namespace Controller;
+
+use Core\Controller;
+use Models\Pessoas;
+use Models\Doses;
+use Models\PessoasDoses;
+use Models\Endereco;
+use Models\Empresa;
+use Models\Lotes;
+use PDOException;
+
 class SistemaController extends Controller
 {
 

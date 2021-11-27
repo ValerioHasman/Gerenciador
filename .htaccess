@@ -19,4 +19,6 @@
 
 # Bloqueia a listagem de diretórios.
 Options All -Indexes
-ErrorDocument 403 http://localhost/Gerenciador
+ErrorDocument 403 '<meta http-equiv="refresh" content="0; url = ../" />'
+ErrorDocument 404 '<meta http-equiv="refresh" content="0; url = ../" />'
+ErrorDocument 500 '<meta http-equiv="refresh" content="0; url = ../" />'

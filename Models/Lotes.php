@@ -1,5 +1,10 @@
 <?php
 
+namespace Models;
+
+use Models\Conexao;
+use PDO;
+
 class Lotes
 {
     private ?int $id;
