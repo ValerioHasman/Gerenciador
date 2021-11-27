@@ -1,5 +1,5 @@
 <?php
-
+// apagar
 spl_autoload_register(
     function($nome_arquivo){
         if(file_exists('Controller/'.$nome_arquivo.'.php')){
