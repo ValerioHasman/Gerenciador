@@ -19,3 +19,7 @@ body{
 .topo{
     margin-top: 10vh;
 }
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
