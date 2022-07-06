@@ -10,23 +10,9 @@
 - [MySql](https://www.youtube.com/playlist?list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r)
 - [HTML e CSS](https://www.youtube.com/playlist?list=PL-u8JWLN6xau0QpzuOTeTI954SsIGEsVA)
 
-```
-Para que o sistema funcione
-{
+## Para que o sistema funcione
 
-    Versão do php usada: 8.0.10;
-
-    Execute a base de dados "mysql.sql";
-
-    O nome do diretorio raiz deve ser: "C:\xampp\htdocs\Gerenciador"
-        ou mude os valores de $GLOBALS['base'] que se enconta index.php na raiz deste projeto
-        para o caminho raiz da url do servidor com a pasta 'Gerenciador/' aberta;
-
-    Vá para Models/Conexao.php e mude os valores de conexão para suas configurações;
-
-    Este projeto precisa de conexão com a internet para carregar o bootstrep;
-
-}
-```
-Link para o documento explicativo:
-https://docs.google.com/document/d/11ukkIQklek3y2g56fdWJD-s_oJaUwHHaTJf1-J1vbx0/edit?usp=sharing
+- Versão do php usada: 8.0.10;
+- Execute a base de dados "mysql.sql";
+- Vá para Models/Conexao.php e mude os valores de conexão para suas configurações;
+- Este projeto precisa de conexão com a internet para carregar o BootStrep;
